@@ -1,0 +1,7 @@
+{
+  "name": "MRentals - Makina me Qera",
+  "description": "\n",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
