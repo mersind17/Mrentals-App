@@ -32,7 +32,7 @@ const CarFleet: React.FC<CarFleetProps> = ({ t, fleet }) => {
                 </svg>
               </div>
               <div>
-                <h4 className="text-[#acc8a2] font-black uppercase tracking-widest text-sm mb-1">{t('fleet_airport_transfer')}</h4>
+                <p className="text-[#acc8a2] font-black uppercase tracking-widest text-sm mb-1">{t('fleet_airport_transfer')}</p>
                 <p className="text-white text-xl md:text-2xl font-bold max-w-xl">{t('fleet_airport_service')}</p>
               </div>
             </div>

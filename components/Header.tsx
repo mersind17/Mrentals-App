@@ -57,6 +57,7 @@ const Header: React.FC<HeaderProps> = ({ lang, toggleLang, isScrolled, t }) => {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, 'home')}
+            aria-label="MRentals – Go to homepage"
             className={`flex items-center group transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-100'}`}
           >
             <Logo className="h-4 sm:h-5" color="#ffffff" />
@@ -79,9 +80,10 @@ const Header: React.FC<HeaderProps> = ({ lang, toggleLang, isScrolled, t }) => {
             {/* Lang Toggle (Circle) */}
             <button
               onClick={toggleLang}
+              aria-label={`Switch language to ${lang === 'en' ? 'Albanian' : 'English'}`}
               className="w-11 h-11 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 active:bg-white/20 transition-all"
             >
-              <span className="text-[10px] font-black text-white">{lang.toUpperCase()}</span>
+              <span className="text-[10px] font-black text-white" aria-hidden="true">{lang.toUpperCase()}</span>
             </button>
           </nav>
 
@@ -89,12 +91,15 @@ const Header: React.FC<HeaderProps> = ({ lang, toggleLang, isScrolled, t }) => {
           <div className="flex items-center space-x-3 md:hidden">
             <button
               onClick={toggleLang}
+              aria-label={`Switch language to ${lang === 'en' ? 'Albanian' : 'English'}`}
               className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/20"
             >
-              <span className="text-[10px] font-black text-white">{lang.toUpperCase()}</span>
+              <span className="text-[10px] font-black text-white" aria-hidden="true">{lang.toUpperCase()}</span>
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isMenuOpen}
               className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full border border-white/20 group"
             >
               {isMenuOpen ? (
@@ -127,15 +132,17 @@ const Header: React.FC<HeaderProps> = ({ lang, toggleLang, isScrolled, t }) => {
           <div className="flex items-center space-x-3">
             <button
               onClick={toggleLang}
+              aria-label={`Switch language to ${lang === 'en' ? 'Albanian' : 'English'}`}
               className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/20"
             >
-              <span className="text-[10px] font-black text-white">{lang.toUpperCase()}</span>
+              <span className="text-[10px] font-black text-white" aria-hidden="true">{lang.toUpperCase()}</span>
             </button>
             <button
               onClick={() => setIsMenuOpen(false)}
+              aria-label="Close navigation menu"
               className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full border border-white/20"
             >
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-white" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>

@@ -29,7 +29,7 @@ const CarCard: React.FC<CarCardProps> = ({ car, t }) => {
   };
 
   return (
-    <div 
+    <div
       className="group relative bg-[#1d2d28] border border-white/5 rounded-[40px] overflow-hidden transition-all duration-700 hover:border-[#acc8a2]/40 active:border-[#acc8a2]/40 flex flex-col h-full shadow-2xl hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] active:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -38,28 +38,39 @@ const CarCard: React.FC<CarCardProps> = ({ car, t }) => {
     >
       {/* Image Container / Gallery */}
       <div className="relative h-72 overflow-hidden bg-black/20">
-        <img 
-          src={car.images[currentImageIndex]} 
-          alt={`${car.name} view ${currentImageIndex + 1}`} 
-          className="w-full h-full object-cover transition-all duration-700 ease-out"
-          style={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }}
-        />
-        
+        <picture>
+          <source
+            srcSet={car.images[currentImageIndex].replace(/\.(jpg|jpeg|png)$/i, '.webp').replace(/ /g, '%20')}
+            type="image/webp"
+          />
+          <img
+            src={car.images[currentImageIndex]}
+            alt={`${car.name} view ${currentImageIndex + 1}`}
+            className="w-full h-full object-cover transition-all duration-700 ease-out"
+            style={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }}
+            loading="lazy"
+            width={800}
+            height={600}
+          />
+        </picture>
+
         {/* Gallery Navigation Arrows */}
         <div className={`absolute inset-x-4 top-1/2 -translate-y-1/2 flex justify-between items-center transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0 md:opacity-0 lg:group-hover:opacity-100 lg:group-active:opacity-100'}`}>
-          <button 
+          <button
             onClick={prevImage}
+            aria-label="Previous image"
             className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-[#acc8a2] hover:text-[#182521] active:bg-[#acc8a2] active:text-[#182521] transition-all"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <button 
+          <button
             onClick={nextImage}
+            aria-label="Next image"
             className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-[#acc8a2] hover:text-[#182521] active:bg-[#acc8a2] active:text-[#182521] transition-all"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -68,13 +79,13 @@ const CarCard: React.FC<CarCardProps> = ({ car, t }) => {
         {/* Gallery Dots */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
           {car.images.map((_, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className={`h-1.5 transition-all duration-300 rounded-full ${i === currentImageIndex ? 'w-6 bg-[#acc8a2]' : 'w-1.5 bg-white/40'}`}
             />
           ))}
         </div>
-        
+
         {/* Overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1d2d28] via-transparent to-transparent opacity-60 pointer-events-none"></div>
       </div>
@@ -92,7 +103,7 @@ const CarCard: React.FC<CarCardProps> = ({ car, t }) => {
             <div className="text-[10px] text-gray-500 uppercase font-black tracking-widest -mt-1">{t('car_per_day')}</div>
           </div>
         </div>
-        
+
         {/* Specs Grid */}
         <div className="grid grid-cols-2 gap-4 text-[11px] text-gray-400 font-bold uppercase tracking-wider mb-8">
           <div className="flex items-center space-x-3 bg-white/5 p-3 rounded-2xl border border-white/5">
@@ -123,7 +134,7 @@ const CarCard: React.FC<CarCardProps> = ({ car, t }) => {
 
         {/* Action Area */}
         <div className="mt-auto">
-          <button 
+          <button
             onClick={handleBooking}
             className="w-full bg-white/5 hover:bg-[#acc8a2] hover:text-[#182521] active:bg-[#acc8a2] active:text-[#182521] border border-white/10 hover:border-[#acc8a2] active:border-[#acc8a2] py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center group/btn"
           >

@@ -43,12 +43,18 @@ const Hero: React.FC<HeroProps> = ({ t }) => {
     <section id="home" className="relative h-[100vh] flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image with Parallax + Ken Burns */}
       <div className="absolute inset-0" ref={bgRef}>
-        <img
-          src="photos/Audi A5(1).jpg"
-          alt="Comodity cars"
-          className="w-full h-full object-cover animate-[kenburns_20s_ease-in-out_infinite]"
-          style={{ transform: `scale(1.1) translateY(${scrollY * 0.3}px)` }}
-        />
+        <picture>
+          <source srcSet="photos/Audi%20A5(1).webp" type="image/webp" />
+          <img
+            src="photos/Audi A5(1).jpg"
+            alt="Luxury car rental in Albania - MRentals"
+            className="w-full h-full object-cover animate-[kenburns_20s_ease-in-out_infinite]"
+            style={{ transform: `scale(1.1) translateY(${scrollY * 0.3}px)` }}
+            fetchPriority="high"
+            width={1920}
+            height={1080}
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-b from-[#182521]/80 via-[#182521]/60 to-[#182521]"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
       </div>

@@ -44,7 +44,7 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-black uppercase tracking-widest text-[#acc8a2] mb-1">{t('contact_location_title')}</h4>
+                  <p className="text-sm font-black uppercase tracking-widest text-[#acc8a2] mb-1">{t('contact_location_title')}</p>
                   <p className="text-xl font-bold text-white">MRentals ( Makina Me Qera )</p>
                   <p className="text-gray-400 font-medium mt-1">{t('contact_address')}</p>
                 </div>
@@ -58,7 +58,7 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-black uppercase tracking-widest text-[#acc8a2] mb-1">{t('contact_direct_title')}</h4>
+                  <p className="text-sm font-black uppercase tracking-widest text-[#acc8a2] mb-1">{t('contact_direct_title')}</p>
                   <a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="text-xl font-bold text-white hover:text-[#acc8a2] active:text-[#acc8a2] transition-colors block">
                     +{WHATSAPP_NUMBER}
                   </a>
@@ -74,7 +74,7 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-black uppercase tracking-widest text-[#acc8a2] mb-1">{t('contact_follow_title')}</h4>
+                  <p className="text-sm font-black uppercase tracking-widest text-[#acc8a2] mb-1">{t('contact_follow_title')}</p>
                   <a href="https://instagram.com/mrentals_al" target="_blank" className="text-xl font-bold text-white hover:text-[#acc8a2] active:text-[#acc8a2] transition-colors block">
                     @mrentals_al
                   </a>
@@ -92,6 +92,7 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
 
             <div className="relative h-full w-full rounded-[60px] overflow-hidden border-[12px] border-white/5 bg-[#141f1b] shadow-2xl">
               <iframe
+                title="MRentals showroom location on Google Maps"
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12023.630658829261!2d20.0768996!3d41.1147076!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13504311210b58db%3A0x8b49ecaa97686724!2sMRentals%20(%20Makina%20Me%20Qera%20)!5e0!3m2!1sen!2s!4v1770141010109!5m2!1sen!2s"
                 width="100%"
                 height="100%"
