@@ -34,7 +34,7 @@ const CarCard: React.FC<CarCardProps> = ({ car, t }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(true)}
-      onTouchEnd={() => setIsHovered(false)}
+      
     >
       {/* Image Container / Gallery */}
       <div className="relative h-72 overflow-hidden bg-black/20">
