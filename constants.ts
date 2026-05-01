@@ -49,18 +49,18 @@ export const FLEET: Car[] = [
   },
   {
     id: 'volvo-xc90',
-    name: 'Volvo XC90',
-    engine: '2.4',
+    name: 'VW PASSAT SEL',
+    engine: '2.0',
     transmission: Transmission.AUTO,
     fuel: Fuel.DIESEL,
-    year: 2007,
-    pricePerDay: 50,
-    seats: 7,
+    year: 2015,
+    pricePerDay: 40,
+    seats: 5,
     features: ['7 Seats', 'AWD', 'Luxury Interior', 'Safety Tech'],
     images: [
-      'photos/Volvo(1).jpg',
-      'photos/Volvo(2).jpg',
-      'photos/Volvo(3).jpg'
+      'photos/Passat Sel 1.jpeg',
+      'photos/Passat Sel 2.jpeg',
+      'photos/Passat Sel 3.jpeg'
     ],
     isAvailable: true,
     category: 'SUV'
