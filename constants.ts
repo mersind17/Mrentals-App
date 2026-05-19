@@ -136,6 +136,24 @@ export const FLEET: Car[] = [
     ],
     isAvailable: true,
     category: 'Standard'
+  },
+  {
+    id: 'vw-polo',
+    name: 'VW Polo',
+    engine: '1.4',
+    transmission: Transmission.MANUAL,
+    fuel: Fuel.DIESEL,
+    year: 2008,
+    pricePerDay: 25,
+    seats: 4,
+    features: ['Manual', 'Economic'],
+    images: [
+      'photos/polo 1.jpg',
+      'photos/polo 2.jpg',
+      'photos/polo 3.jpg'
+    ],
+    isAvailable: true,
+    category: 'Standard'
   }
 ];
 
@@ -175,7 +193,7 @@ export const TRANSLATIONS: TranslationSet = {
   why_support_desc: { en: 'Our team is always ready to help you and provide support 24/7.', sq: 'Ekipi ynë është gjithmonë i gatshëm t\'ju ndihmojë dhe t\'ju ofrojë mbështetje 24/7.' },
   review_title: { en: 'Google Customer Reviews', sq: 'Vlerësimet nga Klientët' },
   review_official_badge: { en: 'Official Reviews', sq: 'Vlerësime Zyrtare' },
-  review_summary_stat: { en: 'Based on 23+ local reviews', sq: 'Bazuar në mbi 23+ vlerësime reale' },
+  review_summary_stat: { en: 'Based on 30+ local reviews', sq: 'Bazuar në mbi 30+ vlerësime reale' },
   review_verified_guide: { en: 'Verified Local Guide', sq: 'Udhërrëfyes Lokal' },
   review_highly_recommended: { en: 'Highly Recommended', sq: 'Rekomandohet Shumë' },
   review_write_btn: { en: 'Write a Review', sq: 'Shkruaj një Vlerësim' },
