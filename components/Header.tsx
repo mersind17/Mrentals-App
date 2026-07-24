@@ -74,7 +74,7 @@ const Header: React.FC<HeaderProps> = ({ lang, toggleLang, isScrolled, t }) => {
             aria-label="MRentals – Kryefaqja"
             className="relative z-[70] flex items-center"
           >
-            <Logo className="h-4 sm:h-5" />
+            <Logo className="h-4 sm:h-5" priority />
           </Link>
 
           {/* Desktop nav */}

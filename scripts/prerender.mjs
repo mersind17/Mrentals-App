@@ -102,9 +102,29 @@ async function writeRoute(routePath, html) {
   console.log(`✅ /${routePath}`);
 }
 
+/**
+ * Fut CSS-në brenda HTML-së dhe heq <link rel="stylesheet">.
+ * CSS-ja është ~8.6KB dhe bllokonte renderimin ~210ms si kërkesë më vete.
+ */
+async function inlineCss(html) {
+  const m = html.match(/<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/);
+  if (!m) {
+    console.warn('⚠️  Nuk u gjet <link> i CSS-së — po vazhdoj pa inline.');
+    return html;
+  }
+  const css = await readFile(join(dist, m[1]), 'utf8');
+  // Replacer si funksion: shmang interpretimin e `$` brenda CSS-së.
+  return html.replace(m[0], () => `<style>${css}</style>`);
+}
+
 async function main() {
-  const base = stripFaqPage(await readFile(join(dist, "index.html"), "utf8"));
+  let base = stripFaqPage(await readFile(join(dist, "index.html"), "utf8"));
+  base = await inlineCss(base);
   console.log('🔄 Duke gjeneruar faqet statike...\n');
+
+  // Home-i merr të njëjtin trajtim (CSS inline) — pa të, vetëm nënfaqet do përfitonin.
+  await writeFile(join(dist, 'index.html'), base, 'utf8');
+  console.log('✅ / (CSS inline)');
 
   // ---- Faqet per-lokacion ----
   for (const loc of LOCATION_ROUTES) {
