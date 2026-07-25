@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Language } from './types';
 import { TRANSLATIONS } from './constants';
@@ -7,9 +7,12 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollProgress from './components/ScrollProgress';
 import Home from './pages/Home';
-import LocationPage from './pages/LocationPage';
-import CarPage from './pages/CarPage';
-import NotFound from './pages/NotFound';
+
+// Faqet e brendshme ngarkohen sipas kërkesës (code-splitting) — kryefaqja
+// nuk procesion kodin e tyre në ngarkimin e parë, gjë që ndihmon telefonat.
+const LocationPage = lazy(() => import('./pages/LocationPage'));
+const CarPage = lazy(() => import('./pages/CarPage'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Titujt e faqes kryesore per gjuhë (faqet e brendshme e vendosin vetë titullin).
 const HOME_TITLE = {
@@ -71,14 +74,16 @@ const AppShell: React.FC = () => {
       <Header lang={lang} toggleLang={toggleLang} isScrolled={isScrolled} t={t} />
 
       <main className="overflow-x-hidden">
-        <Routes>
-          <Route path="/" element={<Home lang={lang} t={t} />} />
-          <Route path="/makina-me-qera-elbasan" element={<LocationPage lang={lang} t={t} />} />
-          <Route path="/makina-me-qera-tirane" element={<LocationPage lang={lang} t={t} />} />
-          <Route path="/makina-me-qera-rinas" element={<LocationPage lang={lang} t={t} />} />
-          <Route path="/makina/:slug" element={<CarPage lang={lang} t={t} />} />
-          <Route path="*" element={<NotFound t={t} />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen" aria-hidden="true" />}>
+          <Routes>
+            <Route path="/" element={<Home lang={lang} t={t} />} />
+            <Route path="/makina-me-qera-elbasan" element={<LocationPage lang={lang} t={t} />} />
+            <Route path="/makina-me-qera-tirane" element={<LocationPage lang={lang} t={t} />} />
+            <Route path="/makina-me-qera-rinas" element={<LocationPage lang={lang} t={t} />} />
+            <Route path="/makina/:slug" element={<CarPage lang={lang} t={t} />} />
+            <Route path="*" element={<NotFound t={t} />} />
+          </Routes>
+        </Suspense>
       </main>
 
       <Footer t={t} lang={lang} />
